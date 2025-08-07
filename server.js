@@ -5,16 +5,18 @@ import uploadRouter from "./Routes/upload.route.js";
 import newsRouter from "./Routes/news.route.js";
 import getStreamRouter from "./Routes/getstream.route.js";
 import cors from "cors";
+import qrcodeRouter from "./Routes/generate.route.js";
+import cors from "cors";
 
 dotenv.config();
 const app = express();
 
 app.use(cors());
 
-// Apply JSON parsing for non-file routes
 app.use("/api/user", express.json(), userRouter);
 
-// Do NOT use express.json() for file upload route
+app.use("/api/qrcode", express.json(), qrcodeRouter);
+
 app.use("/api", uploadRouter);
 
 app.use("/api/news", express.json(), newsRouter);
