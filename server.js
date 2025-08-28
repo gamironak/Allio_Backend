@@ -13,9 +13,21 @@ const app = express();
 
 app.use(cors());
 
-app.use("/api/user", express.json(), userRouter);
+// Serve static files (for /.well-known/assetlinks.json)
+app.use(
+  express.static("public", {
+    dotfiles: "allow",
+    setHeaders: (res, filePath) => {
+      if (filePath.endsWith("assetlinks.json")) {
+        res.setHeader("Content-Type", "application/json");
+        res.setHeader("Cache-Control", "public, max-age=86400");
+      }
+    },
+  })
+);
 
-app.use("/api/qrcode", express.json(), qrcodeRouter);
+// Apply JSON parsing for non-file routes
+app.use("/api/user", express.json(), userRouter);
 
 app.use("/api/ai", express.json(), aiRouter);
 
