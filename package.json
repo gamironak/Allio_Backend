@@ -13,9 +13,9 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "@stream-io/node-sdk": "^0.7.6",
     "@google/genai": "^1.15.0",
     "canvas": "^3.1.2",
+    "@stream-io/node-sdk": "^0.7.6",
     "cloudinary": "^2.7.0",
     "cors": "^2.8.5",
     "dotenv": "^17.2.1",
@@ -28,11 +28,11 @@
     "uuid": "^11.1.0"
   },
   "devDependencies": {
-    "nodemon": "^3.1.10",
     "@types/cors": "^2.8.19",
     "@types/ejs": "^3.1.5",
     "@types/multer": "^2.0.0",
-    "@types/nodemailer": "^6.4.17"
+    "@types/nodemailer": "^6.4.17",
+    "nodemon": "^3.1.10"
   },
   "engines": {
     "node": ">=18"
