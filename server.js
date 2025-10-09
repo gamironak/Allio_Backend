@@ -13,6 +13,15 @@ const app = express();
 
 app.use(cors());
 
+// Root endpoint to verify server is running
+app.get("/", (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: "Allio Backend Server is running successfully! 🚀",
+    port: process.env.PORT || 3000,
+  });
+});
+
 // Serve static files (for /.well-known/assetlinks.json)
 app.use(
   express.static("public", {
@@ -41,4 +50,3 @@ app.use("/api/getstream", express.json(), getStreamRouter);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-
